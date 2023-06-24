@@ -1,35 +1,66 @@
 import asyncio
-import discord
-from discord.ext import commands
+import disnake
+from disnake.ext import commands
 import datetime
-import json
-import console
+from ..helpers import console, msglog
 
 
 class LogFile(commands.Cog):
 
     def __init__(self, bot):
-        self.bot=bot
+        self.bot = bot
 
     @commands.Cog.listener()
     async def on_message(self, message):
-        with open('Stats/RAIN.json', 'r') as NRR: NR=json.loads(NRR.read())
-        if NR["RESPONSING"] == "FALSE":
-            console.error('[NOTRESPONSIN]> logfile.py')
-        else:
-            try:
-                now=datetime.datetime.now()
-                fn=now.strftime('%Y.%d.%w')
-                tt=now.strftime('[%H:%M:%S.%f]')
-                LogT=f'(\n   TIME:      {tt}\n    AUTHOR:   {message.author}\n    AUTHORID: {message.author.id}\n    MESSAGE:\n{message.content}\n)\n'
-                with open(f'LOG/{fn}.txt','a+') as fLT:
-                    fLT.write(LogT)
-            except UnicodeError: pass
+        try:
+            now = datetime.now()
+            file_name = now.strftime('%d-%m-%Y-%H')
+            time = now.strftime('%d.%m.%y %H:%M:%S.%f')
+            msg_log = '\n    TYPE: MESSAGE SEND\n    TIME:      {}\n    AUTHOR:   {}\n    AUTHORID: {}\n    MESSAGE:\n{}\n'.format(time, message.author, message.author.id, message.content)
+            with open(f'../msglogs/{file_name}.txt', 'a+') as WriteMsgLog:
+                WriteMsgLog.write(msg_log)
+            return
+        except UnicodeEncodeError:
+            return console.error('> Error UnicodeEncodeError from msglog.msg_send')
+        except UnicodeDecodeError:
+            return console.error('> Error UnicodeDecodeError from msglog.msg_send')
+        except UnicodeTranslateError:
+            return console.error('> Error UnicodeTranslateError from msglog.msg_send')
+
+    @commands.Cog.listener()
+    async def on_message_edit(self, before, after):
+        try:
+            now = datetime.now()
+            file_name = now.strftime('%d-%m-%Y-%H')
+            time = now.strftime('%d.%m.%y %H:%M:%S.%f')
+            msg_log = '\n    TYPE: MESSAGE EDIT\n    TIME:      {}\n    BEFORE:\n{}\n    AFTER:\n{}\n'.format(time, before.content, after.content)
+            with open(f'../msglogs/{file_name}.txt', 'a+') as WriteMsgLog:
+                WriteMsgLog.write(msg_log)
+            return
+        except UnicodeEncodeError:
+            return console.error('> Error UnicodeEncodeError from msglog.msg_edit')
+        except UnicodeDecodeError:
+            return console.error('> Error UnicodeDecodeError from msglog.msg_edit')
+        except UnicodeTranslateError:
+            return console.error('> Error UnicodeTranslateError from msglog.msg_edit')
+
+    @commands.Cog.listener()
+    async def on_message_delete(self, message):
+        try:
+            now = datetime.now()
+            file_name = now.strftime('%d-%m-%Y-%H')
+            time = now.strftime('%d.%m.%y %H:%M:%S.%f')
+            msg_log = '\n    TYPE: MESSAGE DELETE\n    TIME:      {}\n    AUTHOR:   {}\n    AUTHORID: {}\n    CHANNEL: {}\n    CHANNELID: {}\n    MESSAGE: {}\n'.format(time, message.author, message.author.id, message.channel.name, message.channel.id, message.content)
+            with open(f'../msglogs/{file_name}.txt', 'a+') as WriteMsgLog:
+                WriteMsgLog.write(msg_log)
+            return
+        except UnicodeEncodeError:
+            return console.error('> Error UnicodeEncodeError from msglog.msg_del')
+        except UnicodeDecodeError:
+            return console.error('> Error UnicodeDecodeError from msglog.msg_del')
+        except UnicodeTranslateError:
+            return console.error('> Error UnicodeTranslateError from msglog.msg_del')
 
 
 async def setup(bot):
-    try:
-        await bot.add_cog(LogFile(bot))
-        console.info('[COGS]> logfile.py                    OK')
-    except BaseException:
-        console.error('[COGS]> logfile.py                 ERROR')
+    await bot.add_cog(LogFile(bot))
