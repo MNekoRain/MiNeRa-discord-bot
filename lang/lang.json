@@ -25,7 +25,7 @@
             "ban.success.message": "Пользователь {} был забанен по причине {}",
             "ban.default_reason": "Пользователь был забанен",
             "ban.error.notfound.title": "⚠│ Ошибка │⚠",
-            "ban.error.notfound.message": "Пользователя {} на данном сервере",
+            "ban.error.notfound.message": "Пользователя {} не найден на данном сервере",
 
             "unban.success.title": "🔨│ Разбан │🔨",
             "unban.success.message": "Пользователь {} был разбанен по причине {}",
@@ -44,7 +44,7 @@
             "kick.success.message": "Пользователь {} был кикнут по причине {}",
             "kick.default_reason": "Пользователь бы кикнут",
             "kick.error.notfound.title": "⚠│ Ошибка │⚠",
-            "kick.error.notfound.message": "Пользователя {} нет на данном сервере"
+            "kick.error.notfound.message": "Пользователя {} не найден на данном сервере"
         },
 
         "lang": {
@@ -82,13 +82,105 @@
             "mouth10": "Ноябрь",
             "mouth11": "Декабрь",
 
-            "week0": "Январь",
-            "week1": "Февраль",
-            "week2": "Март",
-            "week3": "Апрель",
-            "week4": "Май",
-            "week5": "Июнь",
-            "week6": "Июль"
+            "week0": "Понедельник",
+            "week1": "Вторник",
+            "week2": "Среда",
+            "week3": "Четверг",
+            "week4": "Пятница",
+            "week5": "Суббота",
+            "week6": "Воскресение"
+        }
+    },
+    "en": {
+        "bot": {
+            "updatecogbase.error.dm": "This command can't use in DM",
+            "updatecogbase.success.message": "CogBase has been updated",
+
+            "cogload.success.title": "⚙│ Cogs │⚙",
+            "cogload.success.message": "{} has load",
+            "cogload.error.notfound.title": "⚠│ Error │⚠",
+            "cogload.error.notfound.message": "{} is not exists",
+            
+            "cogunload.success.title": "⚙│ Cogs │⚙",
+            "cogunload.success.message": "{} has unload",
+            "cogunload.error.notfound.title": "⚠│ Error │⚠",
+            "cogunload.error.notfound.message": "{} is not exists",
+
+            "cogreload.success.title": "⚙│ Cogs │⚙",
+            "cogreload.success.message": "{} has reload",
+            "cogreload.error.notfound.title": "⚠│ Error │⚠",
+            "cogreload.error.notfound.message": "{} is not exists"
+        },
+
+        "ban": {
+            "ban.success.title": "🔨│ Ban │🔨",
+            "ban.success.message": "Member {} has been banned for reason {}",
+            "ban.default_reason": "Member has been banned",
+            "ban.error.notfound.title": "⚠│ Error │⚠",
+            "ban.error.notfound.message": "Member {} not found in this server",
+
+            "unban.success.title": "🔨│ Unban │🔨",
+            "unban.success.message": "Member {} has been unbanned for reason {}",
+            "unban.default_reason": "Member has been unbanned",
+            "unban.error.notfound.title": "⚠│ Error │⚠",
+            "unban.error.notfound.message": "Member {} not have a ban"
+        },
+
+        "clear": {
+            "clear.success.title": "🗑│ Clear │🗑",
+            "clear.success.message": "Has been deleted {} messages"
+        },
+
+        "kick": {
+            "kick.success.title": "🦶🏻│ Kick │🦶🏻",
+            "kick.success.message": "Member {} has been kicked for reason {}",
+            "kick.default_reason": "Member has been kicked",
+            "kick.error.notfound.title": "⚠│ Error │⚠",
+            "kick.error.notfound.message": "Member {} not found in this server"
+        },
+
+        "lang": {
+            "changelang.success.title": "📓| Change language |📓",
+            "changelang.success.message": "Language has been changed on {} for this server"
+        },
+
+        "mute": {
+            "mute.success.title": "💬| Mute |💬",
+            "mute.success.message": "Member {} timed out for reason {}",
+            "mute.default_reason": "Membed timed out",
+            
+            "unmute.success.title": "💬| Unmute |💬",
+            "unmute.success.message": "Member {} remove time-out for reason {}",
+            "unmute.default_reason": "Member remove time-out"
+        },
+
+        "role": {
+            "role.success.title": "✅│ Role │✅",
+            "role.success.message.add": "Member {} give a role {}",
+            "role.success.message.remove": "Member {} remove a role {}"
+        },
+
+        "time_converter": {
+            "mouth0": "January",
+            "mouth1": "February",
+            "mouth2": "March",
+            "mouth3": "April",
+            "mouth4": "May",
+            "mouth5": "June",
+            "mouth6": "July",
+            "mouth7": "August",
+            "mouth8": "September",
+            "mouth9": "October",
+            "mouth10": "November",
+            "mouth11": "December",
+
+            "week0": "Monday",
+            "week1": "Tuesday",
+            "week2": "Wednesday",
+            "week3": "Thursday",
+            "week4": "Friday",
+            "week5": "Saturday",
+            "week6": "Sunday"
         }
     }
 }
